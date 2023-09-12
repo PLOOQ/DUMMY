@@ -11,9 +11,20 @@ class Shop {
     this.items = items;
   }
 
+  // 1. If canned beans, nothing
+  // 2. Everything else, --
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
       // switch
+      // {
+        // if(this.items[i].name == 'Canned Beans')
+        //    coninue;
+        //  this.items[i].sellIn = this.items[i].sellIn - 1;
+        // if(....){
+          // }
+          // 
+          // }
+          // }
 
       if (this.items[i].name != 'Canned Beans') {
         this.items[i].sellIn = this.items[i].sellIn - 1;
@@ -24,7 +35,6 @@ class Shop {
         if (this.items[i].quality < 50) {
           this.items[i].quality = this.items[i].quality + 1;
         }
-
       } else {
         if (this.items[i].quality > 0 && this.items[i].name != 'Canned Beans' && this.items[i].name != 'Baked Sourdough Bread') {
           this.items[i].quality = this.items[i].quality - 1;
