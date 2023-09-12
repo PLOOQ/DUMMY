@@ -13,19 +13,29 @@ class Shop {
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
+      // switch
 
       if (this.items[i].name != 'Canned Beans') {
         this.items[i].sellIn = this.items[i].sellIn - 1;
       }
 
+      // Aged Brie Alone
       if (this.items[i].name == 'Aged Brie') {
         if (this.items[i].quality < 50) {
           this.items[i].quality = this.items[i].quality + 1;
         }
+
       } else {
-        if (this.items[i].quality > 0 && this.items[i].name != 'Canned Beans') {
+        if (this.items[i].quality > 0 && this.items[i].name != 'Canned Beans' && this.items[i].name != 'Baked Sourdough Bread') {
           this.items[i].quality = this.items[i].quality - 1;
         }
+        else if(this.items[i].name == 'Baked Sourdough Bread')
+        {
+          if(this.items[i].quality > 1)
+            this.items[i].quality = this.items[i].quality - 2;
+          else if(this.items[i].quality == 1)
+            this.items[i].quality = this.items[i].quality - 1;
+        } 
       }
 
       if (this.items[i].sellIn < 0) {
@@ -33,9 +43,19 @@ class Shop {
           if (this.items[i].quality < 50) {
             this.items[i].quality = this.items[i].quality + 1;
           }
-        } else {
+        } 
+        
+        else {
           if (this.items[i].quality > 0 && this.items[i].name != 'Canned Beans') {
-            this.items[i].quality = this.items[i].quality - 1;
+            if(this.items[i].name != 'Baked Sourdough Bread')
+              this.items[i].quality = this.items[i].quality - 1;
+            else if(this.items[i].name == 'Baked Sourdough Bread')
+            {
+              if(this.items[i].quality > 1)
+                this.items[i].quality = this.items[i].quality - 2;
+              else if(this.items[i].quality == 1)
+                this.items[i].quality = this.items[i].quality - 1;
+            } 
           }
         }
       }
